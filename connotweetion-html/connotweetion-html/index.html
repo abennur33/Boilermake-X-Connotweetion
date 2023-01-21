@@ -102,8 +102,10 @@
                      <h1 class="contact_taital">Analyze Tweets</h1>
                      <div class="email_text">
                         <div class="form-group">
-                           <label for="start-date">Keyword:</label>
-                           <input type="text" class="email-bt" placeholder="Enter a word" name="Keyword">
+                           <form method="POST" action="{{ url_for('index') }}">
+                              <label for="start-date">Keyword:</label>
+                              <input type="text" class="email-bt" placeholder="Enter a word" name="Keyword">
+                           </form>
                         </div>
                         <div class="form-group">
                            <label for="start-date">From:</label>
