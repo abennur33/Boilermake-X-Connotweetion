@@ -1,10 +1,10 @@
-# Boilermake-X-Connotweetion
+# BoilermakeX TweetEQ
 ## Made by Calvin Madsen, Pravar Annadanam, John Slater, and Aadit Bennur.
 
 ##
 ### From the frontend, we allow the user to meet the team, interact with and learn the project idea.
 ### On the main page, the user can enter a keyword and a time range to run a query and gather data.
-### When the user submits the query, it gets fed into the python script that goes into the twitter api. From the twitter api, there are tweets with the keyword in the time frame gathered and sent to the algorithm.
+### When the user submits the query, it gets fed into the python script that goes uses the twitter api. From the twitter api, there are tweets with the keyword in the time frame gathered and sent to the algorithm.
 ##
 ## The algorithm:
 ### We used tensorflow, trained it on a natural language database, and got it to analyze sentiment.
