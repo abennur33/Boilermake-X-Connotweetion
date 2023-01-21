@@ -30,36 +30,35 @@ def services():
 
 
 def my_python_function(user_input):
+    f = open('pee.csv', 'r+')
+    f.truncate(0)
+
     # Configure
     c = twint.Config()
     c.Search = "lang:en " + user_input
     c.Limit = 10
     c.Store_csv = True
     c.Hide_output = True
-    c.Output = "/pee.csv"
+    c.Output = 'pee.csv'
     c.Custom_csv = ["tweet"]
 
     # Run
     twint.run.Search(c)
 
-    tweets_as_objects = twint.output.tweets_object
+    with open('pee.csv') as csvfile:
+
+        # get number of columns
+        for line in csvfile.readlines():
+            array = line.split(',')
+            user_input = str(array[10])
+            #emotion_mapping = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
+            #prediction, all = to_emotion(user_input, tokenizer, model)
+            print(user_input)#prediction)
 
     return 0
 
 if __name__ == '__main__':
     app.run()
-
-
-
-with open('pee.csv') as csvfile:
-
-    # get number of columns
-    for line in csvfile.readlines():
-        array = line.split(',')
-        user_input = str(array[10])
-        emotion_mapping = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
-        prediction, all = to_emotion(user_input, tokenizer, model)
-        print(prediction)
 
 #user_input = "surprise"
 #emotion_mapping = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
