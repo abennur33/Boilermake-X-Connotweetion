@@ -98,16 +98,70 @@
          <div class="row">
             <div class="col-md-6">
                <div class="about_taital_main">
-                  <h1 class="about_taital">About Us</h1>
-                  <p class="about_text">There are many variations of passages of Lorem Ipsum available, but the majority
-                     have suffered alteration in some form, by injected humour, or randomised words which don't look
-                     even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure
-                     there isn't anything embarrassing hidden in the middle of text. All </p>
-                  <div class="readmore_bt"><a href="#">Read More</a></div>
+                  <div class="container">
+                     <h1 class="contact_taital">Analyze Tweets</h1>
+                     <div class="email_text">
+                        <div class="form-group">
+                           <label for="start-date">Keyword:</label>
+                           <input type="text" class="email-bt" placeholder="Enter a word" name="Keyword">
+                        </div>
+                        <div class="form-group">
+                           <label for="start-date">From:</label>
+                           <input type="date" class="from-bt" placeholder="From" name="From">
+                        </div>
+                        <div class="form-group">
+                           <label for="start-date">Until:</label>
+                           <input type="date" class="until-bt" placeholder="Until" name="Until">
+                        </div>
+                        <div class="send_btn"><a href="#">SUBMIT</a></div>
+                     </div>
+                  </div>
                </div>
             </div>
             <div class="col-md-6 padding_right_0">
-               <div><img src="images/about-img.png" class="about_img"></div>
+               <div>
+                  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+                  <canvas id="myChart"></canvas>
+                  <script>
+                     var ctx = document.getElementById('myChart').getContext('2d');
+                     var myChart = new Chart(ctx, {
+                         type: 'pie',
+                         data: {
+                             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                             datasets: [{
+                                 label: '# of Votes',
+                                 data: [12, 19, 3, 5, 2, 3],
+                                 backgroundColor: [
+                                     'rgba(255, 99, 132, 0.2)',
+                                     'rgba(54, 162, 235, 0.2)',
+                                     'rgba(255, 206, 86, 0.2)',
+                                     'rgba(75, 192, 192, 0.2)',
+                                     'rgba(153, 102, 255, 0.2)',
+                                     'rgba(255, 159, 64, 0.2)'
+                                 ],
+                                 borderColor: [
+                                     'rgba(255, 99, 132, 1)',
+                                     'rgba(54, 162, 235, 1)',
+                                     'rgba(255, 206, 86, 1)',
+                                     'rgba(75, 192, 192, 1)',
+                                     'rgba(153, 102, 255, 1)',
+                                     'rgba(255, 159, 64, 1)'
+                                 ],
+                                 borderWidth: 1
+                             }]
+                         },
+                         options: {
+                             scales: {
+                                 yAxes: [{
+                                     ticks: {
+                                         beginAtZero: true
+                                     }
+                                 }]
+                             }
+                         }
+                     });
+                 </script>
+               </div>
             </div>
          </div>
       </div>
