@@ -105,11 +105,18 @@
                            <form method="POST" action="{{ url_for('index') }}">
                               <input type="text" class="email-bt" placeholder="Enter a word" name="Keyword">
                               <label for="start-date">From:</label>
-                              <input type="date" class="from-bt" value="" name="From">
+                              <input type="date" class="from-bt" value="" name="From" onload="setCurrentDate()">
                               <label for="start-date">Until:</label>
-                              <input type="date" class="until-bt" value="2023-01-21" name="Until">
+                              <input type="date" class="until-bt" value="" name="Until" onload="setCurrentDate()">
                               <input type="submit" value="Submit">
                            </form>
+                           <script>
+                              function setCurrentDate() {
+                                let today = new Date();
+                                let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                                document.getElementById("dateField").value = date;
+                              }
+                            </script>
                         </div>
                         <!--<div class="form-group">
                            <label for="start-date">From:</label>
