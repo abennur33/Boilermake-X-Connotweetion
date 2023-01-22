@@ -7,7 +7,9 @@ app = Flask(__name__,template_folder='templates', static_folder='static')
 def index():
     if request.method == 'POST':
         Keyword = request.form['Keyword']
-        result = my_python_function(Keyword)
+        From = request.form['From']
+        Until = request.form['Until']
+        result = my_python_function(Keyword, From, Until)
         return render_template('index.html', result=result)
     return render_template('index.html')
 
@@ -29,14 +31,18 @@ def services():
 
 
 
-def my_python_function(user_input):
+def my_python_function(Keyword, From, Until):
     f = open('pee.csv', 'r+')
     f.truncate(0)
 
+    print(Keyword+", "+ From+", "+ Until)
+
     # Configure
     c = twint.Config()
-    c.Search = "lang:en " + user_input
+    c.Search = "lang:en " + Keyword
     c.Limit = 10
+    c.Since = From
+    c.Until = Until
     c.Store_csv = True
     c.Hide_output = True
     c.Output = 'pee.csv'
