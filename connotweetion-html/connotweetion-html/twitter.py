@@ -1,16 +1,17 @@
 import twint
+from searchtweets import collect_results, ResultStream, gen_rule_payload, load_credentials
 import csv
 from flask import Flask, request, render_template
 
 import numpy as np
 import pickle
 from keras.utils import pad_sequences
+import keras
 
 
 
 
 app = Flask(__name__,template_folder='templates', static_folder='static')
-print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -81,7 +82,7 @@ if __name__ == '__main__':
 
 
     tokenizer = pickle.load(open('tokenizer.pkl', 'rb'))
-    model = pickle.load(open('model.pkl', 'rb'))
+    model = keras.models.load_model('model.h5')
 
     user_input = "I am depressed"
     x = to_emotion(user_input, tokenizer, model, 200)
