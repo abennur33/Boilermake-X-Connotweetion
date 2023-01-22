@@ -88,5 +88,5 @@ y_pred = pred(x_test, model)
 
 review_accuracy(y_test, y_pred)
 
-print(to_emotion("Hello world!", tokenizer, model, max_words))
+#print(to_emotion("Hello world!", tokenizer, model, max_words))
 

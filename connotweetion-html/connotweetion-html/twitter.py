@@ -1,12 +1,17 @@
 import twint
 import csv
 from flask import Flask, request, render_template
-from RNN import to_emotion, preprocess_data, RNN
+
+import numpy as np
+import pickle
+from keras.utils import pad_sequences
+
+
+
+
 app = Flask(__name__,template_folder='templates', static_folder='static')
 print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
 
-#x_train, y_train, x_test, y_test, tokenizer, max_words = preprocess_data(r"merged_training.pkl")
-#model = RNN(x_train, y_train, tokenizer, epochs=4, batch_size=64)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -66,10 +71,21 @@ def my_python_function(Keyword, From, Until):
     return 0
 
 if __name__ == '__main__':
+    def to_emotion(user_input, tokenizer, model, max_words):
+        x = tokenizer.texts_to_sequences([user_input])
+        x = pad_sequences(x, maxlen=max_words)
+        y = model.predict(x)
+        y = np.argmax(y, axis=1)
+        emotion_mapping = {0: "sadness", 1: "joy", 2: "love", 3: "anger", 4: "fear", 5: "surprise"}
+        return emotion_mapping[y[0]]
+
+
+    tokenizer = pickle.load(open('tokenizer.pkl', 'rb'))
+    model = pickle.load(open('model.pkl', 'rb'))
+
+    user_input = "I am depressed"
+    x = to_emotion(user_input, tokenizer, model, 200)
+    print(x)
+
     app.run()
 
-#user_input = "surprise"
-#emotion_mapping = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
-#prediction, all = to_emotion(user_input, tokenizer, model)
-#print(prediction)
-#print(all)
