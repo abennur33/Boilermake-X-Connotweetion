@@ -110,13 +110,13 @@
                               <input type="date" value="" name="Until" id="dateField" onload="setCurrentDate()">
                               <input type="submit" value="Submit">
                            </form>
+                           <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
                            <script>
-                              function setCurrentDate() {
-                                let today = new Date();
-                                let date = today.getFullYear().slice(-4); + '-' + ("0" + (today.getMonth() + 1)).slice(-2); + '-' + today.getDate().slice(-2);;
-                                document.getElementById("dateField").value = date;
+                                 function setCurrentDate() {
+                                 let today = moment().format('YYYY-MM-DD');
+                                 document.getElementById("dateField").value = today;
                               }
-                            </script>
+                           </script>
                         </div>
                         <!--<div class="form-group">
                            <label for="start-date">From:</label>
