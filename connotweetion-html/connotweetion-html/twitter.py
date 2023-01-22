@@ -1,7 +1,12 @@
 import twint
 import csv
 from flask import Flask, request, render_template
+from RNN import to_emotion, preprocess_data, RNN
 app = Flask(__name__,template_folder='templates', static_folder='static')
+print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+
+#x_train, y_train, x_test, y_test, tokenizer, max_words = preprocess_data(r"merged_training.pkl")
+#model = RNN(x_train, y_train, tokenizer, epochs=4, batch_size=64)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -56,10 +61,7 @@ def my_python_function(Keyword, From, Until):
         # get number of columns
         for line in csvfile.readlines():
             array = line.split(',')
-            user_input = str(array[10])
-            #emotion_mapping = {"sadness": 0, "joy": 1, "love": 2, "anger": 3, "fear": 4, "surprise": 5}
-            #prediction, all = to_emotion(user_input, tokenizer, model)
-            print(user_input)#prediction)
+            #to_emotion(str(array[10]), tokenizer, model, max_words)
 
     return 0
 
