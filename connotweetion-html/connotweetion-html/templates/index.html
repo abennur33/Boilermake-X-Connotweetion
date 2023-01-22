@@ -103,17 +103,17 @@
                      <div class="email_text">
                         <div class="form-group">
                            <form method="POST" action="{{ url_for('index') }}">
-                              <input type="text" class="email-bt" placeholder="Enter a word" name="Keyword">
+                              <input type="text" placeholder="Enter a word" name="Keyword" id="dateField" onload="setCurrentDate()">
                               <label for="start-date">From:</label>
-                              <input type="date" class="from-bt" value="" name="From" onload="setCurrentDate()">
+                              <input type="date" value="" name="From" id="dateField" onload="setCurrentDate()">
                               <label for="start-date">Until:</label>
-                              <input type="date" class="until-bt" value="" name="Until" onload="setCurrentDate()">
+                              <input type="date" value="" name="Until" id="dateField" onload="setCurrentDate()">
                               <input type="submit" value="Submit">
                            </form>
                            <script>
                               function setCurrentDate() {
                                 let today = new Date();
-                                let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                                let date = today.getFullYear().slice(-4); + '-' + ("0" + (today.getMonth() + 1)).slice(-2); + '-' + today.getDate().slice(-2);;
                                 document.getElementById("dateField").value = date;
                               }
                             </script>
